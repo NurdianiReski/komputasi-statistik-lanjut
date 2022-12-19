@@ -1,0 +1,32 @@
+---
+title: "KOMSTAT LANJUT"
+author: "NURDIANI RESKI"
+date: "2022-12-19"
+output: word_document
+---
+
+# Install Package
+
+```{r}
+library(wordcloud)
+```
+# Menghitung frequensi per kata
+
+```{r}
+text = readLines("~/DIANI/covid.csv", )
+text = unlist(strsplit(text, "\\W+"))
+text = tolower(text)
+text = data.frame(table(text))
+```
+
+# menjalankan wordcloud
+
+```{r}
+wordcloud(text$text, text$Freq)
+```
+
+# Generate word-cloud
+```{r}
+wordcloud(text$text, text$Freq, random.order=FALSE, rot.per=0.25, colors=brewer.pal(8, "Dark2"))
+```
+
